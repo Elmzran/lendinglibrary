@@ -1,13 +1,38 @@
-﻿.main-content
+﻿/* Set size of main content column */
+.main-content
 {
     max-width: 65%;
     margin: 2em auto 0;
 }
 
-@media (max-width: 768px) {
-    .main-content
-{
-    max-width: 90%;
-    margin: 2em auto 0;
+/* Spacing between each book row, as well as border style */
+.book {
+    margin-bottom: 3em;
+    padding: 1em 1em 2em;
+    border: 3px solid lightgrey;
+    border-radius: 8px;
 }
+
+.book-description {
+    white-space: pre-wrap;
+}
+
+
+
+@media (max-width: 968px) {
+    /* Increase size of main content column when window is thinner */
+    .main-content
+    {
+        max-width: 90%;
+        margin: 2em auto 0;
+    }
+
+    /* Center book title and img div content */
+    .book-header * {
+        text-align: center;
+    }
+    .book-header img {
+        display: block;
+        margin: auto;
+    }
 }

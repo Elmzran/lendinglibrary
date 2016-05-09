@@ -15,7 +15,7 @@
         <h3>Program written by Jonathan Roosa in May 2016.</h3>
         <hr />
         <div class="book-container" ng-controller="BookController as books">
-            <div class="book row" ng-repeat="book in books.bookData" ng-controller="AvailabilityController as status">
+            <div class="book row" ng-repeat="book in books.bookData">
                 <div class="book-header col-md-4">
                     <h2>{{book.title}}</h2>
                     <h4>By {{book.author}}</h4>
@@ -24,9 +24,14 @@
                 <div class="book-info col-md-8">
                     <h3>Description</h3>
                     <p class="book-description">{{book.description}}</p>
-                    <div class="row">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6"></div>
+                    <div class="row book-availability" ng-controller="AvailabilityController as status">
+                        <div class="col-md-6" ng-class="{available:status.availability, unavailable:!status.availability}">
+                            <h4 ng-show="status.availability">Available</h4>
+                            <h4 ng-hide="status.availability">Borrowed</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="lend-button" ng-click="status.swapAvailability()">{{status.availability ? "Lend" : "Return"}}</button>
+                        </div>
                     </div>
                 </div>
             </div>

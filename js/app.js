@@ -1,1 +1,4 @@
-// JavaScript source code
+// Web application code for the books.
+(function () {
+    
+})();

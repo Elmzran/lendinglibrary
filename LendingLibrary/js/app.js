@@ -5,15 +5,19 @@
 
     // Controller for book data
     app.controller("BookController", ["$http", function ($http) {
+
+        // Get book data
         var self = this;
         self.bookData = [];
         $http.get("api/Book/5").success(function(data) {
             self.bookData = data;
             console.log(data);
         });
+
         this.addBorrower = function (borrowedBook, borrower) {
             borrowedBook.borrower = borrower;
         }
+
         this.swapAvailability = function (book) {
             if (book.availability === true)
                 book.availability = false;

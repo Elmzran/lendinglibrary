@@ -39,3 +39,7 @@ C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\bi
 C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\obj\Debug\LendingLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\obj\Debug\LendingLibrary.dll
 C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\obj\Debug\LendingLibrary.pdb
+C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\bin\EntityFramework.dll
+C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\bin\EntityFramework.SqlServer.dll
+C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\bin\EntityFramework.xml
+C:\Users\Jonathan Roosa\Documents\NASA\Projects\lendinglibrary\LendingLibrary\bin\EntityFramework.SqlServer.xml

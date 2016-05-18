@@ -4,8 +4,13 @@
     var app = angular.module("library", []);
 
     // Controller for book data
-    app.controller("BookController", function () {
-        this.bookData = books;
+    app.controller("BookController", ["$http", function ($http) {
+        var self = this;
+        self.bookData = [];
+        $http.get("api/Book/5").success(function(data) {
+            self.bookData = data;
+            console.log(data);
+        });
         this.addBorrower = function (borrowedBook, borrower) {
             borrowedBook.borrower = borrower;
         }
@@ -15,7 +20,7 @@
             else
                 book.availability = true;
         }
-    });
+    }]);
 
     // Controller for checkout status
     app.controller("AvailabilityController", function () {
@@ -28,7 +33,7 @@
         }
     });
 
-    var books = [{
+    /* var books = [{
         title: "Ubik",
         author: "Philip K. Dick",
         cover: "./img/books/ubik.png",
@@ -52,5 +57,5 @@
         cover: "./img/books/ringworld.png",
         description: "Pierson's puppeteers, three-leg two-head aliens find immense structure in unexplored part of the universe. Frightened of meeting the builders, they send a team of two humans, a puppeteer and a kzin, eight-foot red-fur catlike alien. Ringworld is 180 million miles across, sun at center. But the expedition crashes, and crew face disastrously long trek.",
         availability: true
-    }];
+    }];*/
 })();

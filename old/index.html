@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>Lending Library</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+    <body ng-app="library">
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <div class="main-content">
+            <h1>The Lending Library</h1>
+            <h3>Program written by Jonathan Roosa in May 2016.</h3>
+            <hr />
+            <div class="book-container" ng-controller="BookController as books">
+                <div class="book row" ng-repeat="book in books.bookData">
+                    <div class="book-header col-md-4">
+                        <h2>{{book.title}}</h2>
+                        <h4>By {{book.author}}</h4>
+                        <img ng-src="{{book.cover}}"/>
+                    </div>
+                    <div class="book-info col-md-8">
+                        <h3>Description</h3>
+                        <p class="book-description">{{book.description}}</p>
+                        <div class="row book-availability" ng-controller="AvailabilityController as status">
+                            <div class="col-md-6" ng-class="{available:book.availability, unavailable:!book.availability}">
+                                <h4 ng-show="book.availability">Available</h4>
+                                <h4 ng-hide="book.availability">Borrowed by {{book.borrower}}</h4>
+                            </div>
+                            <div class="col-md-6">        
+                                <form name="borrowForm" class="borrow-form" ng-submit="borrowForm.$valid && books.swapAvailability(book); borrowForm.$valid && books.addBorrower(book, borrower); borrower = ''" novalidate>
+                                    <textarea ng-show="book.availability" ng-model="borrower" ng-required="book.availability"></textarea>
+                                    <button type="submit" value="Submit" class="lend-button">{{book.availability ? "Lend" : "Return"}}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

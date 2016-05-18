@@ -47,6 +47,11 @@
     color: white;
 }
 
+/* Style for the submission form, mainly to just shift it down */
+.borrow-form {
+    margin-top: 2em;
+}
+
 
 @media (max-width: 968px) {
     /* Increase size of main content column when window is thinner */

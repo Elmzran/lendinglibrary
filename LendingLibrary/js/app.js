@@ -9,10 +9,16 @@
         // Get book data
         var self = this;
         self.bookData = [];
-        $http.get("api/Book/5").success(function(data) {
-            self.bookData = data;
-            console.log(data);
+        $http.get("api/Book").success(function(data) {
+            self.bookData = JSON.parse(data);
+            console.log(self.bookData);
         });
+
+        // Save book data
+        this.saveBookData = function () {
+            $http.post("api/Book", self.bookData);
+            console.log(self.bookData);
+        }
 
         this.addBorrower = function (borrowedBook, borrower) {
             borrowedBook.borrower = borrower;

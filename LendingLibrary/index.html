@@ -30,7 +30,7 @@
                                 <h4 ng-hide="book.availability">Borrowed by {{book.borrower}}</h4>
                             </div>
                             <div class="col-md-6">        
-                                <form name="borrowForm" class="borrow-form" ng-submit="borrowForm.$valid && books.swapAvailability(book); borrowForm.$valid && books.addBorrower(book, borrower); borrower = ''" novalidate>
+                                <form name="borrowForm" class="borrow-form" ng-submit="borrowForm.$valid && books.swapAvailability(book); borrowForm.$valid && books.addBorrower(book, borrower); borrower = ''; books.saveBookData()" novalidate>
                                     <textarea ng-show="book.availability" ng-model="borrower" ng-required="book.availability"></textarea>
                                     <button type="submit" value="Submit" class="lend-button">{{book.availability ? "Lend" : "Return"}}</button>
                                 </form>

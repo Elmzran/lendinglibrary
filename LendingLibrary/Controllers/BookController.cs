@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using LendingLibrary.Models;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace LendingLibrary.Controllers
 {
@@ -31,8 +32,10 @@ namespace LendingLibrary.Controllers
         }
 
         // POST: api/Book
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public void Post([FromBody]JToken value)
         {
+            File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", Convert.ToString(value));
         }
 
         // PUT: api/Book/5

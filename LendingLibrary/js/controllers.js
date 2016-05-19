@@ -1,7 +1,7 @@
 // Web application code for the books.
 (function () {
     // Main program module
-    angular.module("library", [])
+    angular.module("library", ["libraryRouting"])
 
     // Controller for book data
     .controller("BookController", ["$http", function ($http) {

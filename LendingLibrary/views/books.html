@@ -1,0 +1,23 @@
+﻿<div class="book row" ng-repeat="book in books.bookData">
+    <div class="book-header col-md-4">
+        <h2>{{book.title}}</h2>
+        <h4>By {{book.author}}</h4>
+        <img ng-src="{{book.cover}}" />
+    </div>
+    <div class="book-info col-md-8">
+        <h3>Description</h3>
+        <p class="book-description">{{book.description}}</p>
+        <div class="row book-availability" ng-controller="AvailabilityController as status">
+            <div class="col-md-6" ng-class="{available:book.availability, unavailable:!book.availability}">
+                <h4 ng-show="book.availability">Available</h4>
+                <h4 ng-hide="book.availability">Borrowed by {{book.borrower}}</h4>
+            </div>
+            <div class="col-md-6">
+                <form name="borrowForm" class="borrow-form" ng-submit="borrowForm.$valid && books.swapAvailability(book); borrowForm.$valid && books.addBorrower(book, borrower); borrower = ''; books.saveBookData();" novalidate>
+                    <textarea ng-show="book.availability" ng-model="borrower" ng-required="book.availability"></textarea>
+                    <button type="submit" value="Submit" class="lend-button">{{book.availability ? "Lend" : "Return"}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

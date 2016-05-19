@@ -1,10 +1,10 @@
 // Web application code for the books.
 (function () {
     // Main program module
-    var app = angular.module("library", []);
+    angular.module("library", [])
 
     // Controller for book data
-    app.controller("BookController", ["$http", function ($http) {
+    .controller("BookController", ["$http", function ($http) {
 
         // Get book data
         var self = this;
@@ -30,10 +30,10 @@
             else
                 book.availability = true;
         }
-    }]);
+    }])
 
     // Controller for checkout status
-    app.controller("AvailabilityController", function () {
+    .controller("AvailabilityController", function () {
         this.availability = true;
         this.swapAvailability = function () {
             if (this.availability === true)
@@ -41,7 +41,7 @@
             else
                 this.availability = true;
         }
-    });
+    })
 
     /* var books = [{
         title: "Ubik",

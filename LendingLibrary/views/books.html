@@ -7,7 +7,7 @@
     <div class="book-info col-md-8">
         <h3>Description</h3>
         <p class="book-description">{{books.currentBook.description}}</p>
-        <div class="row book-availability" ng-controller="AvailabilityController as status">
+        <div class="row book-availability">
             <div class="col-md-6" ng-class="{available:books.currentBook.availability, unavailable:!books.currentBook.availability}">
                 <h4 ng-show="books.currentBook.availability">Available</h4>
                 <h4 ng-hide="books.currentBook.availability">Borrowed by {{books.currentBook.borrower}}</h4>

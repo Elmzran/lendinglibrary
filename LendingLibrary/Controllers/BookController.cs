@@ -39,10 +39,7 @@ namespace LendingLibrary.Controllers
         // PUT: api/Book/5
         public void Put(int id, [FromBody]BookData value)
         {
-            if (id < data.Count)
-                data[id] = value;
-            else
-                data.Add(value);
+            data[id] = value;
             File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", JsonConvert.SerializeObject(data));
         }
 

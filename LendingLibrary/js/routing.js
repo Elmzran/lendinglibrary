@@ -5,7 +5,7 @@
     .config(function ($routeProvider) {
         $routeProvider.when("/books/:id", {
             templateUrl: "views/books.html",
-            controller: "BookController",
+            controller: "SingleBookController",
             controllerAs: "books"
         })
         .when("/books", {

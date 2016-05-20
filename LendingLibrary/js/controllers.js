@@ -3,8 +3,8 @@
     // Main program module
     angular.module("library", ["libraryRouting"])
 
-    // Controller for book data
-    .controller("BookController", ["$http", "$routeParams", function ($http, $routeParams) {
+    // Controller for data for all books
+    .controller("BookController", ["$http", function ($http) {
 
         // Get book data
         var self = this;
@@ -18,12 +18,19 @@
         // Save ALL book data
         this.saveBookData = function () {
             $http.post("api/Book", self.bookData);
-        }
+        };
+        
+    }])
+
+    // Controller for a single book
+    .controller("SingleBookController", ["$http", "$routeParams", function ($http, $routeParams) {
+
+        var self = this;
 
         // Upload specific book
         this.saveBook = function () {
             $http.put("api/Book/" + $routeParams.id, self.currentBook);
-        }
+        };
 
         // Get data for selected book
         this.selectBook = function () {
@@ -31,12 +38,12 @@
                 self.currentBook = data;
                 console.log(data);
             })
-        }
+        };
 
         // Add a borrower to a book
         this.addBorrower = function (borrowedBook, borrower) {
             borrowedBook.borrower = borrower;
-        }
+        };
 
         // Swap book between available and borrowed
         this.swapAvailability = function (book) {
@@ -44,6 +51,6 @@
                 book.availability = false;
             else
                 book.availability = true;
-        }
-    }])
+        };
+    }]);
 })();

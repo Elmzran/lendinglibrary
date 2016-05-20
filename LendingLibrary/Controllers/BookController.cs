@@ -7,40 +7,43 @@ using System.Web.Http;
 using LendingLibrary.Models;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace LendingLibrary.Controllers
 {
     public class BookController : ApiController
     {
+        // Book data
+        private static List<BookData> data = new List<BookData>();
+
         // GET: api/Book
-        public string Get()
+        public IEnumerable<BookData> Get()
         {
-            return File.ReadAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json");
+            data = JsonConvert.DeserializeObject<List<BookData>>(File.ReadAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json"));
+            return data;
         }
 
         // GET: api/Book/5
-        public IEnumerable<BookData> Get(int id)
+        public BookData Get(int id)
         {
-            BookData[] test = new BookData[1];
-            test[0] = new BookData();
-            test[0].Title = "Ubik";
-            test[0].Author = "Philip K. Dick";
-            test[0].Cover = "./img/books/ubik.png";
-            test[0].Description = "Ubik is a 1969 science fiction novel by American writer Philip K. Dick. It is one of Dick's most acclaimed novels. It was chosen by Time magazine as one of the 100 greatest novels since 1923. In his review for Time, critic Lev Grossman described it as \"a deeply unsettling existential horror story, a nightmare you'll never be sure you've woken up from.\"\n\nThe novel takes place in the \"North American Confederation\" of 1992, where civilians regularly travel to the Moon, and psi phenomena are common. The novel's protagonist, Joe Chip, is a debt-ridden technician for Glen Runciter's \"prudence organization\", which employs people with the ability to block psychic powers (like an anti-telepath, preventing a telepath from reading a mind) to help enforce privacy. Runciter runs the company with the assistance of his deceased wife Ella, who is kept in a state of \"half-life\", a form of cryonic suspension that gives the deceased limited consciousness and the ability to communicate.";
-            test[0].Availability = true;
-            return test;
+            return data[id];
         }
 
         // POST: api/Book
         [HttpPost]
         public void Post([FromBody]BookData[] value)
         {
-            //File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", Convert.ToString(value));
+            File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", JsonConvert.SerializeObject(value));
         }
 
         // PUT: api/Book/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]BookData value)
         {
+            if (id < data.Count)
+                data[id] = value;
+            else
+                data.Add(value);
+            File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", JsonConvert.SerializeObject(data));
         }
 
         // DELETE: api/Book/5

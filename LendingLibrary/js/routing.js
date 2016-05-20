@@ -3,8 +3,13 @@
 
     // Routing configuration
     .config(function ($routeProvider) {
-        $routeProvider.when("/books", {
+        $routeProvider.when("/books/:id", {
             templateUrl: "views/books.html",
+            controller: "BookController",
+            controllerAs: "books"
+        })
+        .when("/books", {
+            templateUrl: "views/booklist.html",
             controller: "BookController",
             controllerAs: "books"
         })

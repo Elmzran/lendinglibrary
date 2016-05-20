@@ -33,9 +33,9 @@ namespace LendingLibrary.Controllers
 
         // POST: api/Book
         [HttpPost]
-        public void Post([FromBody]JToken value)
+        public void Post([FromBody]BookData[] value)
         {
-            File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", Convert.ToString(value));
+            //File.WriteAllText("C:/Users/Jonathan Roosa/Documents/NASA/Projects/lendinglibrary/LendingLibrary/Models/book_data.json", Convert.ToString(value));
         }
 
         // PUT: api/Book/5

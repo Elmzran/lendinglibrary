@@ -4,26 +4,42 @@
     angular.module("library", ["libraryRouting"])
 
     // Controller for book data
-    .controller("BookController", ["$http", function ($http) {
+    .controller("BookController", ["$http", "$routeParams", function ($http, $routeParams) {
 
         // Get book data
         var self = this;
         self.bookData = [];
-        $http.get("api/Book").success(function(data) {
-            self.bookData = JSON.parse(data);
-            console.log(self.bookData);
-        });
-
+        this.getBookData = function () {
+            $http.get("api/Book").success(function (data) {
+                self.bookData = JSON.parse(data);
+                console.log(self.bookData);
+            });
+        };
+        
         // Save book data
         this.saveBookData = function () {
             $http.post("api/Book", self.bookData);
-            console.log(self.bookData);
+            console.log("JSON POST");
         }
 
+        // Get data for selected book
+        this.selectBook = function () {
+            console.log(self.bookData);
+            console.log("Line 29");
+            for (var i = 0; i < this.bookData.length; ++i) {
+                if (this.bookData[i].id == $routeParams.id) {
+                    this.currentBook = this.bookData[i];
+                    console.log(bookData[i]);
+                }
+            }
+        }
+
+        // Add a borrower to a book
         this.addBorrower = function (borrowedBook, borrower) {
             borrowedBook.borrower = borrower;
         }
 
+        // Swap book between available and borrowed
         this.swapAvailability = function (book) {
             if (book.availability === true)
                 book.availability = false;

@@ -1,5 +1,6 @@
 [
   {
+    "id": "1000",
     "title": "Ubik",
     "author": "Philip K. Dick",
     "cover": "./img/books/ubik.png",
@@ -7,6 +8,7 @@
     "availability": true
   },
   {
+    "id": "1001",
     "title": "Ubik: The Screenplay",
     "author": "Philip K. Dick",
     "cover": "./img/books/ubik_screenplay.png",
@@ -14,6 +16,7 @@
     "availability": true
   },
   {
+    "id": "1002",
     "title": "Rendezvous with Rama",
     "author": "Arthur C. Clarke",
     "cover": "./img/books/rendezvous_with_rama.png",
@@ -21,6 +24,7 @@
     "availability": true
   },
   {
+    "id": "1003",
     "title": "Ringworld",
     "author": "Larry Niven",
     "cover": "./img/books/ringworld.png",

@@ -1,21 +1,26 @@
 ﻿(function () {
-    angular.module("libraryRouting", ["ngRoute"])
+    angular.module("libraryRouting", ["ui.router"])
 
-    // Routing configuration
-    .config(function ($routeProvider) {
-        $routeProvider.when("/books/:id", {
-            templateUrl: "views/books.html",
-            controller: "SingleBookController",
-            controllerAs: "books"
+    // State routing configuration
+    .config(function ($stateProvider, $urlRouterProvider) {
+        // Unmatched URL redirect
+        $urlRouterProvider.otherwise("/main");
+
+        $stateProvider.state("main", {
+            url: "/main",
+            templateUrl: "views/main.html"
         })
-        .when("/books", {
+        .state("books", {
+            url: "/books",
             templateUrl: "views/booklist.html",
             controller: "BookController",
             controllerAs: "books"
         })
-        .when("/main", {
-            templateUrl: "views/main.html",
-        })
-        .otherwise({redirectTo: '/main'});
+        .state("book", {
+            url: "/books/:id",
+            templateUrl: "views/books.html",
+            controller: "SingleBookController",
+            controllerAs: "books"
+        });
     });
 })();

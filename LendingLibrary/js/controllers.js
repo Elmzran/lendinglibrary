@@ -23,18 +23,18 @@
     }])
 
     // Controller for a single book
-    .controller("SingleBookController", ["$http", "$routeParams", function ($http, $routeParams) {
+    .controller("SingleBookController", ["$http", "$stateParams", function ($http, $stateParams) {
 
         var self = this;
 
         // Upload specific book
         this.saveBook = function () {
-            $http.put("api/Book/" + $routeParams.id, self.currentBook);
+            $http.put("api/Book/" + $stateParams.id, self.currentBook);
         };
 
         // Get data for selected book
         this.selectBook = function () {
-            $http.get("api/Book/" + $routeParams.id).success(function (data) {
+            $http.get("api/Book/" + $stateParams.id).success(function (data) {
                 self.currentBook = data;
                 console.log(data);
             })

@@ -1,5 +1,5 @@
 ﻿<div style="display: flex; flex-wrap: wrap;" ng-init="books.getBookData()">
     <div style="margin: 0 1em 1em;" ng-repeat="book in books.bookData" >
-        <a href="#/books/{{book.id}}"><img ng-src="{{book.cover}}" /></a>
+        <a ui-sref="book({id: book.id})"><img ng-src="{{book.cover}}" /></a>
     </div>
 </div>

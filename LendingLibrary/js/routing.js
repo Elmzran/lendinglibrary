@@ -19,8 +19,7 @@
         .state("book", {
             url: "/books/:id",
             templateUrl: "views/books.html",
-            controller: "SingleBookController",
-            controllerAs: "books"
+            controller: "SingleBookController"
         });
     });
 })();

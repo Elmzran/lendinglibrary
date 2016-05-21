@@ -23,30 +23,28 @@
     }])
 
     // Controller for a single book
-    .controller("SingleBookController", ["$http", "$stateParams", function ($http, $stateParams) {
-
-        var self = this;
+    .controller("SingleBookController", ["$http", "$stateParams", "$scope", function ($http, $stateParams, $scope) {
 
         // Upload specific book
-        this.saveBook = function () {
-            $http.put("api/Book/" + $stateParams.id, self.currentBook);
+        $scope.saveBook = function () {
+            $http.put("api/Book/" + $stateParams.id, $scope.currentBook);
         };
 
         // Get data for selected book
-        this.selectBook = function () {
+        $scope.selectBook = function () {
             $http.get("api/Book/" + $stateParams.id).success(function (data) {
-                self.currentBook = data;
+                $scope.currentBook = data;
                 console.log(data);
             })
         };
 
         // Add a borrower to a book
-        this.addBorrower = function (borrowedBook, borrower) {
+        $scope.addBorrower = function (borrowedBook, borrower) {
             borrowedBook.borrower = borrower;
         };
 
         // Swap book between available and borrowed
-        this.swapAvailability = function (book) {
+        $scope.swapAvailability = function (book) {
             if (book.availability === true)
                 book.availability = false;
             else

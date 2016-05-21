@@ -1,21 +1,21 @@
-﻿<div class="book row" ng-init="books.selectBook()" >
+﻿<div class="book row" ng-init="selectBook()" >
     <div class="book-header col-md-4">
-        <h2>{{books.currentBook.title}}</h2>
-        <h4>By {{books.currentBook.author}}</h4>
-        <img ng-src="{{books.currentBook.cover}}" />
+        <h2>{{currentBook.title}}</h2>
+        <h4>By {{currentBook.author}}</h4>
+        <img ng-src="{{currentBook.cover}}" />
     </div>
     <div class="book-info col-md-8">
         <h3>Description</h3>
-        <p class="book-description">{{books.currentBook.description}}</p>
+        <p class="book-description">{{currentBook.description}}</p>
         <div class="row book-availability">
-            <div class="col-md-6" ng-class="{available:books.currentBook.availability, unavailable:!books.currentBook.availability}">
-                <h4 ng-show="books.currentBook.availability">Available</h4>
-                <h4 ng-hide="books.currentBook.availability">Borrowed by {{books.currentBook.borrower}}</h4>
+            <div class="col-md-6" ng-class="{available:currentBook.availability, unavailable:!currentBook.availability}">
+                <h4 ng-show="currentBook.availability">Available</h4>
+                <h4 ng-hide="currentBook.availability">Borrowed by {{currentBook.borrower}}</h4>
             </div>
             <div class="col-md-6">
-                <form name="borrowForm" class="borrow-form" ng-submit="borrowForm.$valid && books.swapAvailability(books.currentBook); borrowForm.$valid && books.addBorrower(books.currentBook, borrower); borrower = ''; books.saveBook()" novalidate>
-                    <textarea ng-show="books.currentBook.availability" ng-model="borrower" ng-required="books.currentBook.availability"></textarea>
-                    <button type="submit" value="Submit" class="lend-button">{{books.currentBook.availability ? "Lend" : "Return"}}</button>
+                <form name="borrowForm" class="borrow-form" ng-submit="borrowForm.$valid && swapAvailability(currentBook); borrowForm.$valid && addBorrower(currentBook, borrower); borrower = ''; saveBook()" novalidate>
+                    <textarea ng-show="currentBook.availability" ng-model="borrower" ng-required="currentBook.availability"></textarea>
+                    <button type="submit" value="Submit" class="lend-button">{{currentBook.availability ? "Lend" : "Return"}}</button>
                 </form>
             </div>
         </div>

@@ -4,35 +4,35 @@
     angular.module("library", ["libraryRouting"])
 
     // Controller for data for all books
-    .controller("BookController", ["$http", function ($http) {
+    .controller("BookController", ["Data", function (Data) {
 
         // Get book data
         var self = this;
         self.bookData = [];
         this.getBookData = function () {
-            $http.get("api/Book").success(function (data) {
+            Data.http("GET").success(function (data) {
                 self.bookData = data;
             });
         };
 
         // Save ALL book data
         this.saveBookData = function () {
-            $http.post("api/Book", self.bookData);
+            Data.http("POST", "", self.bookData);
         };
         
     }])
 
     // Controller for a single book
-    .controller("SingleBookController", ["$http", "$stateParams", "$scope", function ($http, $stateParams, $scope) {
+    .controller("SingleBookController", ["$stateParams", "$scope", "Data", function ($stateParams, $scope, Data) {
 
         // Upload specific book
         $scope.saveBook = function () {
-            $http.put("api/Book/" + $stateParams.id, $scope.currentBook);
+            Data.http("PUT", $stateParams.id, $scope.currentBook);
         };
 
         // Get data for selected book
         $scope.selectBook = function () {
-            $http.get("api/Book/" + $stateParams.id).success(function (data) {
+            Data.http("GET", $stateParams.id).success(function (data) {
                 $scope.currentBook = data;
                 console.log(data);
             })

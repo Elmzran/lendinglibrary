@@ -1,7 +1,10 @@
 ﻿(function () {
     angular.module("library")
-    .factory("Data", ["$http", function DataFactory($http) {
+    .factory("Data", ["$http", "$resource", function DataFactory($http, $resource) {
         return {
+            resource: function () {
+                return $resource("/api/Book/:id", {}, {});
+                },
             http: function (method, specific, data) {
                 if (specific == undefined)
                     specific = ""

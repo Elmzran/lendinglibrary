@@ -1,7 +1,7 @@
 // Web application code for the books.
 (function () {
     // Main program module
-    angular.module("library", ["libraryRouting"])
+    angular.module("library", ["libraryRouting", "ngResource"])
 
     // Controller for data for all books
     .controller("BookController", ["Data", function (Data) {
@@ -10,9 +10,7 @@
         var self = this;
         self.bookData = [];
         this.getBookData = function () {
-            Data.http("GET").success(function (data) {
-                self.bookData = data;
-            });
+            self.bookData = Data.resource().query();
         };
 
         // Save ALL book data
@@ -32,10 +30,7 @@
 
         // Get data for selected book
         $scope.selectBook = function () {
-            Data.http("GET", $stateParams.id).success(function (data) {
-                $scope.currentBook = data;
-                console.log(data);
-            })
+            $scope.currentBook = Data.resource().get({id: $stateParams.id});
         };
 
         // Add a borrower to a book

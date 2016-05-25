@@ -125,6 +125,7 @@
     <Content Include="img\books\ubik.png" />
     <Content Include="img\books\ubik_screenplay.png" />
     <Content Include="index.html" />
+    <Content Include="js\angular-resource.js" />
     <Content Include="js\angular-ui-router.min.js" />
     <Content Include="js\angular.min.js" />
     <Content Include="js\controllers.js" />

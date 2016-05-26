@@ -9,7 +9,7 @@
         // Variables
         var self = this;
         self.bookData = [];
-        var availabilityStatus = null;
+        this.availabilityStatus = undefined;
 
         // Get book data
         this.getBookData = function () {
@@ -26,12 +26,7 @@
             return this.availabilityStatus;
         };
         this.setAvailabilityStatus = function (newStatus) {
-            if (newStatus == "showAll")
-                this.availabilityStatus = null;
-            else if (newStatus == "showAvailable")
-                this.availabilityStatus = true;
-            else if (newStatus == "showBorrowed")
-                this.availabilityStatus = false;
+            this.availabilityStatus = newStatus;
         };
         
     }])

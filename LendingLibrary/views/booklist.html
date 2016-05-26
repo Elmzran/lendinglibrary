@@ -1,5 +1,12 @@
-﻿<div style="display: flex; flex-wrap: wrap;" ng-init="books.getBookData()">
-    <div style="margin: 0 1em 1em;" ng-repeat="book in books.bookData" >
+﻿<div style="margin-bottom: 1em;">
+    <ul class="nav nav-pills">
+        <li><a ng-class="{selected : books.currentAvailabilityStatus() === null}" ng-click="books.setAvailabilityStatus('showAll')">Show All</a></li>
+        <li><a ng-class="{selected : books.currentAvailabilityStatus() === true}" ng-click="books.setAvailabilityStatus('showAvailable')">Show Available</a></li>
+        <li><a ng-class="{selected : books.currentAvailabilityStatus() === false}" ng-click="books.setAvailabilityStatus('showBorrowed')">Show Borrowed</a></li>
+    </ul>
+</div>
+<div style="display: flex; flex-wrap: wrap;" ng-init="books.getBookData()">
+    <div style="margin: 0 1em 1em;" ng-show="books.currentAvailabilityStatus() == book.availability || books.currentAvailabilityStatus() == null" ng-repeat="book in books.bookData" >
         <a ui-sref="book({id: book.id})"><img ng-src="{{book.cover}}" /></a>
     </div>
 </div>

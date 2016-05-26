@@ -6,9 +6,12 @@
     // Controller for data for all books
     .controller("BookController", ["Data", function (Data) {
 
-        // Get book data
+        // Variables
         var self = this;
         self.bookData = [];
+        var availabilityStatus = null;
+
+        // Get book data
         this.getBookData = function () {
             self.bookData = Data.resource().query();
         };
@@ -16,6 +19,19 @@
         // Save ALL book data
         this.saveBookData = function () {
             Data.http("POST", "", self.bookData);
+        };
+
+        // Show / hide books based on availability status functions
+        this.currentAvailabilityStatus = function () {
+            return this.availabilityStatus;
+        };
+        this.setAvailabilityStatus = function (newStatus) {
+            if (newStatus == "showAll")
+                this.availabilityStatus = null;
+            else if (newStatus == "showAvailable")
+                this.availabilityStatus = true;
+            else if (newStatus == "showBorrowed")
+                this.availabilityStatus = false;
         };
         
     }])

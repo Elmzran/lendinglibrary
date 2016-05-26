@@ -52,6 +52,10 @@
     margin-top: 2em;
 }
 
+/* Style for selected availability buttons and buttons in general */
+.selected {
+    background-color: rgb(238, 238, 238);
+}
 
 @media (max-width: 968px) {
     /* Increase size of main content column when window is thinner */

@@ -25,6 +25,7 @@
         this.currentAvailabilityStatus = function () {
             return this.availabilityStatus;
         };
+
         this.setAvailabilityStatus = function (newStatus) {
             this.availabilityStatus = newStatus;
         };

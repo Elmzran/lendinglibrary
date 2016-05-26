@@ -5,8 +5,9 @@
         <li><a ng-class="{selected : books.currentAvailabilityStatus() === false}" ng-click="books.setAvailabilityStatus(false)">Show Borrowed</a></li>
     </ul>
 </div>
+<input style="margin-bottom: 1em;" ng-model="search"/>
 <div style="display: flex; flex-wrap: wrap;" ng-init="books.getBookData()">
-    <div style="margin: 0 1em 1em;" ng-repeat="book in books.bookData | filter: {availability: books.currentAvailabilityStatus()}" >
+    <div style="margin: 0 1em 1em;" ng-repeat="book in books.bookData | filter: {availability: books.currentAvailabilityStatus()} | filter: search" >
         <a ui-sref="book({id: book.id})"><img ng-src="{{book.cover}}" /></a>
     </div>
 </div>
